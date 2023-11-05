@@ -1,0 +1,30 @@
+{
+  "name": "gestiondepensesymfony",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "encore dev",
+    "build": "encore production",
+    "watch": "encore dev --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^4.5.0",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.0.0",
+    "webpack-notifier": "^1.15.0"
+  }
+}
