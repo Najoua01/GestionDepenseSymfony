@@ -1,28 +1,24 @@
+{# templates/accueil_twig/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AccueilTwigController!{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('app') }}
-{% endblock %}
-
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+<!-- Ajoutez ceci où vous souhaitez afficher le calendrier -->
+<div id="calendar"></div>
 
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/src/Controller/AccueilTwigController.php'|file_link(0) }}">src/Controller/AccueilTwigController.php</a></code></li>
-            <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/templates/accueil_twig/index.html.twig'|file_link(0) }}">templates/accueil_twig/index.html.twig</a></code></li>
-        </ul>
-    </div>
-
-    {# Ajoutez les balises script générées par Webpack Encore pour FullCalendar #}
-    {{ encore_entry_script_tags('app') }}
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/src/Controller/AccueilTwigController.php'|file_link(0) }}">src/Controller/AccueilTwigController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/templates/accueil_twig/index.html.twig'|file_link(0) }}">templates/accueil_twig/index.html.twig</a></code></li>
+    </ul>
+</div>
 {% endblock %}

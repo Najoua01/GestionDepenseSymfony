@@ -8,8 +8,20 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
-// Importer FullCalendar et ses plugins
+// Importez FullCalendar et les plugins dont vous avez besoin
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+
+// Initialisez FullCalendar avec les plugins nécessaires
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new Calendar(calendarEl, {
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+        // Ajoutez d'autres options ici...
+    });
+
+    calendar.render();
+});
