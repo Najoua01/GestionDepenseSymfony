@@ -1,5 +1,10 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+
+accueil-twig:
+    path: /accueil/twig
+    controller: App\Controller\AccueilTwigController::index
+
+depense-twig:
+    path: /depense/twig/{date}
+    controller: App\Controller\DepenseTwigController::index
+    requirements:
+        date: \d{4}-\d{2}-\d{2}

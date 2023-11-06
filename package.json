@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^4.5.0",
+    "core-js": "^3.33.2",
     "sass": "^1.69.5",
     "sass-loader": "^13.0.0",
     "webpack-notifier": "^1.15.0"

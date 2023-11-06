@@ -14,13 +14,22 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
-// Initialisez FullCalendar avec les plugins nécessaires
+
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
+    
+    var formUrl = calendarPath.replace('DATE_TO_BE_REPLACED', currentDateString);
 
     var calendar = new Calendar(calendarEl, {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        // Ajoutez d'autres options ici...
+        events: [
+            // Vos événements ici
+        ],
+        dateClick: function (info) {
+            var dateStr = info.dateStr;
+            formUrl = formUrl.replace('DATE_TO_BE_REPLACED', dateStr);
+            window.location.href = formUrl;
+        },
     });
 
     calendar.render();

@@ -5,7 +5,7 @@
 {% block title %}Hello AccueilTwigController!{% endblock %}
 
 {% block body %}
-<!-- Ajoutez ceci où vous souhaitez afficher le calendrier -->
+
 <div id="calendar"></div>
 
 <style>
@@ -13,12 +13,26 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/src/Controller/AccueilTwigController.php'|file_link(0) }}">src/Controller/AccueilTwigController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/templates/accueil_twig/index.html.twig'|file_link(0) }}">templates/accueil_twig/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% set currentDate = date() %}
+{% set currentDateString = currentDate|date("Y-m-d") %}
+{% set formUrl = path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) %}
+{% set calendarPath = path('depense-twig', { 'date': currentDateString }) %}
+
+<script>
+    var currentDate = new Date();
+    var currentDateString = '{{ currentDate|date("Y-m-d") }}';
+    var formUrl = "{{ path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
+    formUrl = formUrl.replace('DATE_TO_BE_REPLACED', currentDateString);
+
+    var calendarPath = "{{ path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
+    calendarPath = calendarPath.replace('DATE_TO_BE_REPLACED', currentDateString);
+</script>
+
+<script>
+    var calendarPath = "{{ calendarPath }}";
+    var formUrl = "{{ formUrl }}";
+</script>
+
+<script src="{{ asset('build/app.js') }}"></script>
+
 {% endblock %}
