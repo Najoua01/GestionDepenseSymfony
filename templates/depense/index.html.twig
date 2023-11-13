@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de Dépense{% endblock %}
+
+{% block body %}
+
+<h1>Formulaire de Dépenses</h1>
+
+{{ form_start(form, {'attr': {'id': 'depense_form'}}) }}
+
+{{ form_row(form.date, {'attr': {'class': 'narrow'}}) }}
+{{ form_row(form.montant, {'attr': {'class': 'narrow'}}) }}
+{{ form_row(form.achat, {'attr': {'class': 'medium'}}) }}
+{{ form_row(form.remarque, {'attr': {'class': 'wide'}}) }}
+
+{{ form_row(form.save) }}
+
+<button type="button" id="save_and_return">Enregistrer et Revenir</button>
+
+{{ form_end(form) }}
+
+<script src="{{ asset('app.js') }}"></script>
+<script>
+    // Fonction pour gérer la soumission du formulaire
+    function submitForm(action) {
+        // Envoyer une requête AJAX au serveur
+        var formData = new FormData(document.getElementById('depense_form'));
+
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Mettre à jour la page ou effectuer d'autres actions nécessaires
+                alert('Dépense enregistrée avec succès');
+                if (action === '{{ path('depense_new', {'date': date}) }}') {
+                    // Rediriger vers la page du calendrier
+                    window.location.href = '{{ path('accueil') }}';
+                }
+            } else {
+                alert('Une erreur s\'est produite lors de l\'enregistrement de la dépense');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors de l\'envoi de la requête AJAX', error);
+        });
+    }
+
+    // Intercepter la soumission du formulaire
+    document.getElementById('depense_form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Empêcher la soumission normale du formulaire
+        submitForm('{{ path('depense_new', {'date': date}) }}');
+    });
+
+    // Gérer le clic sur le bouton "Enregistrer et Revenir"
+    document.getElementById('save_and_return').addEventListener('click', function () {
+        submitForm('{{ path('depense_new', {'date': date}) }}');
+    });
+</script>
+<link rel="stylesheet" href="{{ asset('styles/depense.css') }}">
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {
   "name": "gestiondepensesymfony",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -19,13 +19,21 @@
     "@fullcalendar/core": "^6.1.9",
     "@fullcalendar/daygrid": "^6.1.9",
     "@fullcalendar/interaction": "^6.1.9",
-    "@fullcalendar/timegrid": "^6.1.9"
+    "@fullcalendar/timegrid": "^6.1.9",
+    "consolidate": "^1.0.0",
+    "vue": "^3.0.0",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
     "@symfony/webpack-encore": "^4.5.0",
+    "axios": "^1.6.1",
+    "babel-loader": "^8.2.2",
     "core-js": "^3.33.2",
-    "sass": "^1.69.5",
-    "sass-loader": "^13.0.0",
+    "vue": "^2.6.16",
+    "vue-loader": "^17.3.1",
+    "vue-template-compiler": "^2.6.14",
     "webpack-notifier": "^1.15.0"
-  }
+  },
+  "description": ""
 }

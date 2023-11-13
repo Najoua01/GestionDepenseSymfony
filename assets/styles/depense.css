@@ -1,0 +1,12 @@
+
+.narrow {
+    width: 100px; /* Champs montant plus étroit */
+}
+
+.wide {
+    width: 100%; /* Champs remarque prend toute la largeur disponible */
+}
+
+.medium {
+    width: 200px; /* Champs achat un peu plus large */
+}

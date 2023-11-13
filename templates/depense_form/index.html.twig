@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DepenseFormController!{% endblock %}
+{% block title %}Nouvelle Dépense{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Nouvelle Dépense</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {{ form_start(form, {'attr': {'id': 'depense_form'}}) }}
+    <div>
+        {{ form_row(form.date) }}
+    </div>
+    <div>
+        {{ form_row(form.montant) }}
+    </div>
+    <div>
+        {{ form_row(form.achat) }}
+    </div>
+    <div>
+        {{ form_row(form.remarque) }}
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/src/Controller/DepenseFormController.php'|file_link(0) }}">src/Controller/DepenseFormController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/SYMFONY/GestionDepenseSymfony/templates/depense_form/index.html.twig'|file_link(0) }}">templates/depense_form/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <button type="submit">Valider</button>
+    <button type="button" id="save_and_return">Valider et Revenir</button>
+    {{ form_end(form) }}
+
+    <script src="{{ asset('app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('styles/depense.css') }}">
 {% endblock %}

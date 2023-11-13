@@ -28,11 +28,11 @@ class User
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Depense::class)]
-    private Collection $fait;
+    private Collection $depense;
 
     public function __construct()
     {
-        $this->fait = new ArrayCollection();
+        $this->depense = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,24 +91,24 @@ class User
     /**
      * @return Collection<int, Depense>
      */
-    public function getFait(): Collection
+    public function getDepense(): Collection
     {
-        return $this->fait;
+        return $this->depense;
     }
 
-    public function addFait(Depense $fait): static
+    public function addDepense(Depense $fait): static
     {
-        if (!$this->fait->contains($fait)) {
-            $this->fait->add($fait);
+        if (!$this->depense->contains($fait)) {
+            $this->depense->add($fait);
             $fait->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeFait(Depense $fait): static
+    public function removeDepense(Depense $fait): static
     {
-        if ($this->fait->removeElement($fait)) {
+        if ($this->depense->removeElement($fait)) {
             // set the owning side to null (unless already changed)
             if ($fait->getUser() === $this) {
                 $fait->setUser(null);

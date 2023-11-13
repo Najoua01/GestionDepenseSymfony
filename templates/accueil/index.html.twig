@@ -1,8 +1,7 @@
-{# templates/accueil_twig/index.html.twig #}
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilTwigController!{% endblock %}
+{% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
 
@@ -15,16 +14,17 @@
 
 {% set currentDate = date() %}
 {% set currentDateString = currentDate|date("Y-m-d") %}
-{% set formUrl = path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) %}
-{% set calendarPath = path('depense-twig', { 'date': currentDateString }) %}
+{% set calendarPath = path('depense', { 'date': currentDateString }) %}
+{% set formUrl = path('depense', { 'date': currentDateString }) %}
+
 
 <script>
     var currentDate = new Date();
     var currentDateString = '{{ currentDate|date("Y-m-d") }}';
-    var formUrl = "{{ path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
+    var formUrl = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
     formUrl = formUrl.replace('DATE_TO_BE_REPLACED', currentDateString);
 
-    var calendarPath = "{{ path('depense-twig', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
+    var calendarPath = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
     calendarPath = calendarPath.replace('DATE_TO_BE_REPLACED', currentDateString);
 </script>
 
@@ -34,5 +34,8 @@
 </script>
 
 <script src="{{ asset('build/app.js') }}"></script>
+
+<div id="app"></div>
+    {{ encore_entry_script_tags('app') }}
 
 {% endblock %}

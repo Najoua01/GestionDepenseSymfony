@@ -18,7 +18,7 @@ class Depense
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
-    private ?string $montant = null;
+    private ?float $montant = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $achat = null;
@@ -26,7 +26,7 @@ class Depense
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $remarque = null;
 
-    #[ORM\ManyToOne(inversedBy: 'fait')]
+    #[ORM\ManyToOne(inversedBy: 'depense')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -47,12 +47,12 @@ class Depense
         return $this;
     }
 
-    public function getMontant(): ?string
+    public function getMontant(): ?float
     {
         return $this->montant;
     }
 
-    public function setMontant(?string $montant): static
+    public function setMontant(?float $montant): static
     {
         $this->montant = $montant;
 
