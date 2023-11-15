@@ -1,4 +1,4 @@
-export default App;
+
 import axios from 'axios';
 import Vue from 'vue';
 import Datepicker from 'vuejs-datepicker';

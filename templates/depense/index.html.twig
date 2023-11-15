@@ -3,7 +3,7 @@
 {% block title %}Formulaire de Dépense{% endblock %}
 
 {% block body %}
-
+{{ parent() }}
 <h1>Formulaire de Dépenses</h1>
 
 {{ form_start(form, {'attr': {'id': 'depense_form'}}) }}
@@ -19,7 +19,7 @@
 
 {{ form_end(form) }}
 
-<script src="{{ asset('app.js') }}"></script>
+<script src="{{ asset('app.js') }}" defer></script>
 <script>
     // Fonction pour gérer la soumission du formulaire
     function submitForm(action) {

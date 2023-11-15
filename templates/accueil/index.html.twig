@@ -1,41 +1,29 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
+    {{ parent() }}
 
-<div id="calendar"></div>
+    <div id="calendar"></div>
 
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% set currentDate = "now"|date("Y-m-d") %}
+    {% set calendarPath = path('depense', { 'date': currentDate }) %}
+    {% set formUrl = path('depense', { 'date': currentDate }) %}
 
-{% set currentDate = date() %}
-{% set currentDateString = currentDate|date("Y-m-d") %}
-{% set calendarPath = path('depense', { 'date': currentDateString }) %}
-{% set formUrl = path('depense', { 'date': currentDateString }) %}
-
-
-<script>
-    var currentDate = new Date();
-    var currentDateString = '{{ currentDate|date("Y-m-d") }}';
-    var formUrl = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
-    formUrl = formUrl.replace('DATE_TO_BE_REPLACED', currentDateString);
-
-    var calendarPath = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}";
-    calendarPath = calendarPath.replace('DATE_TO_BE_REPLACED', currentDateString);
-</script>
-
-<script>
-    var calendarPath = "{{ calendarPath }}";
-    var formUrl = "{{ formUrl }}";
-</script>
-
-<script src="{{ asset('build/app.js') }}"></script>
-
-<div id="app"></div>
+    <div id="app"></div>
     {{ encore_entry_script_tags('app') }}
 
+    <script>
+        var currentDate = '{{ currentDate }}';
+        var formUrl = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}".replace('DATE_TO_BE_REPLACED', currentDate);
+        var calendarPath = "{{ path('depense', { 'date': 'DATE_TO_BE_REPLACED' }) }}".replace('DATE_TO_BE_REPLACED', currentDate);
+    </script>
+
+    <script>
+        var calendarPath = "{{ calendarPath }}";
+        var formUrl = "{{ formUrl }}";
+    </script>
+
+    <script src="{{ asset('build/app.js') }}" defer></script>
 {% endblock %}

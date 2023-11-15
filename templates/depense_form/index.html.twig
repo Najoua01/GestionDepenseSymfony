@@ -3,6 +3,7 @@
 {% block title %}Nouvelle Dépense{% endblock %}
 
 {% block body %}
+{{ parent() }}
     <h1>Nouvelle Dépense</h1>
 
     {{ form_start(form, {'attr': {'id': 'depense_form'}}) }}
@@ -23,6 +24,6 @@
     <button type="button" id="save_and_return">Valider et Revenir</button>
     {{ form_end(form) }}
 
-    <script src="{{ asset('app.js') }}"></script>
+    <script src="{{ asset('app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('styles/depense.css') }}">
 {% endblock %}

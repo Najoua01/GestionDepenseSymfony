@@ -4,6 +4,7 @@
 {% block title %}Liste des Dépenses{% endblock %}
 
 {% block body %}
+{{ parent() }}
     <h1>Liste des dépenses pour le {{ date }}</h1>
 
     {% if depenses is not empty %}
